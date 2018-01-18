@@ -1,0 +1,11 @@
+<% if current_user && current_user.role == "shipper" %>
+    <%= render :partial => 'shipper_list' %>
+<% elsif current_user && current_user.role == "manager" || current_user && current_user.role == "admin"%>
+    <%= render :partial => 'reorder_list' %>
+<% elsif current_user && current_user.role == "customer" %>
+    <%= render :partial => 'order_history' %>
+<% else %>
+    <%= render :partial => 'general_home' %>
+<% end %>
+
+

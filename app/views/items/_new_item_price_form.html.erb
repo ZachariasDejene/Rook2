@@ -1,0 +1,17 @@
+<div id="new_item_price_form">
+<%= simple_form_for @item_price, remote: true, html: { class: 'form-horizontal', multipart: true } do |f| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> Price</legend>
+
+    <%= f.input :item_id, as: :hidden, input_html: {value: params[:item_id], class: "avg"} %>
+    <%= f.input :price, input_html: {class: "avg"} %>
+    <%= f.input :category, collection: ItemPrice::CATEGORIES, input_html: {class: "avg"} %>
+
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'button radius' %>
+      <%= link_to 'Cancel', items_path, :class => 'button alert radius' %>
+    </div>
+  </fieldset>
+<% end %>
+</div>

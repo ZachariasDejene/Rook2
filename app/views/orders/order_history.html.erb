@@ -1,0 +1,28 @@
+<% if @orders.empty? %>
+  <h4>No Orders at this time.</h4>
+<% else %>
+  <h4>Order History</h4>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th width="225">Item</th>
+        <th width="150">Quantity</th>
+        <th width="150">Date</th>
+        <th width="150">Price</th>
+      </tr>
+    </thead>
+  </table>
+        <ul>
+          <% @orders.each do |order| %>
+          <li>
+              <%= order.date.strftime('%m/%d/%y') %>
+              <%= number_to_currency(order.grand_total) %>
+            <% order.order_items.each do |order_item| %>
+              <%= order_item.quantity %>
+              <%= link_to order_item.item.name, item_path(order_item.item) %>
+            <% end %>
+         </li>
+        <% end %>         
+        </ul>
+<% end %>
+<p>&nbsp;</p>

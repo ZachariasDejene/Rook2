@@ -1,0 +1,35 @@
+<h4>Hello <%= current_user.first_name %></h4>
+
+<% if @orders.nil? || @orders.empty? %>
+  <h4>No Orders at this time.</h4>
+<% else %>
+  <h4>Order History</h4>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th width="225">Item</th>
+        <th width="150">Quantity</th>
+        <th width="150">Date</th>
+        <th width="150">Price</th>
+        <th width="125">Reorder Item</th>
+      </tr>
+    </thead>
+  </table>
+      <tbody>
+
+            <% @orders.each do |order| %>
+          <% order.order_items.each do |order_item| %>
+        <tr>
+          <td><%= link_to order_item.item.name, item_path(order_item.item) %></td>
+          <td><%= order_item.quantity %></td>
+          <td><%= order.date.strftime('%m/%d/%y') %></td>
+          <td><%= number_to_currency(order.grand_total) %></td>
+          <td><%= link_to add_to_cart_path(order_item.item.id), class: 'button tiny radius' do %>
+            &nbsp;<%= "Add to Cart" %>
+            <% end %></td>
+     
+        </tr>
+                  <% end %>
+        <% end %>    
+        </tbody>
+<% end %>

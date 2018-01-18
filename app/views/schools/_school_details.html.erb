@@ -1,0 +1,29 @@
+<h5>More about <%= @school.name %> </h5>
+
+<p>
+
+<b>Address</b>
+<p><%= @school.street_1 %></p>
+<p><%= @school.city %></p>
+<p><%= @school.state %></p>
+<p><%= @school.zip %></p>
+
+</p>
+
+<p>
+    
+<b>Min Grade</b>
+<p><% unless @school.min_grade.nil? %>
+<%= @school.min_grade %>
+<% end %></p>
+</p>
+
+
+<p>
+    
+<b>Max Grade</b>
+<p><% unless @school.max_grade.nil? %>
+<%= @school.max_grade %>
+<% end %></p>
+
+</p>

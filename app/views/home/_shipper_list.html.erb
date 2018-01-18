@@ -1,0 +1,30 @@
+<div id="ship">
+  <h5>Shipper List</h5>
+  <% unless @shipper_list.nil? || @shipper_list.empty? %>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th width="250">Name</th>
+          <th width="125">Order Number</th>
+          <th width="125">Customer</th>
+          <th width="125">Ship</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @shipper_list.each do |order_item| %>
+          <tr>
+            <td><%= link_to order_item.item.name, item_path(order_item.item) %></td>
+            <td><%= order_item.order_id %></td>
+            <td><%= order_item.order.user_id %></td>
+            <td><%= link_to(ship_path(order_item.id), class: 'button tiny radius') do %>
+                <%= "Ship" %>
+                <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>There are no items that need to be shipped at this time.</p>
+  <% end %>
+</div>

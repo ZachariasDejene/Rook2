@@ -1,0 +1,11 @@
+/*
+ *= require_self
+*/
+
+body {
+  background-color: #000;
+}
+.fixed-image-section {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.247059), rgba(0, 0, 0, 0.247059)), url(http://cdn.skim.gs/images/gpctfibnvtcwlj6bp2xr/5-reasons-why-black-kids-should-learn-to-play-chess);
+    background-size: initial;
+}
